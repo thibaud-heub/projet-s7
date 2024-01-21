@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/Image">
+        <file>etex_logo.png</file>
+        <file>fondIrangeBlanc.jpg</file>
+        <file>no-image.jpg</file>
+        <file>No-Image-Placeholder.svg.png</file>
+    </qresource>
+</RCC>
