@@ -21,7 +21,7 @@
     <string notr="true">*{
 	border: none;
 	background-color: transparent;
-	color: #fff;
+	color: #000000;
 }
 #centralwidget{
 	background-color: rgb(255, 255, 255);
@@ -39,16 +39,17 @@ QPushButton{
 #main_body{
 	background-color: rgb(255, 166, 0);
 	border-radius: 10px;
+	color: #000000;
 	
 }</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
-    <item alignment="Qt::AlignTop">
+    <item>
      <widget class="QFrame" name="header">
       <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>50</height>
+        <height>56</height>
        </size>
       </property>
       <property name="maximumSize">
@@ -256,14 +257,14 @@ QPushButton{
              <item>
               <widget class="QPushButton" name="pushButton_3">
                <property name="text">
-                <string>Image</string>
+                <string>CSV</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_4">
                <property name="text">
-                <string>CSV</string>
+                <string>Image</string>
                </property>
               </widget>
              </item>
@@ -301,119 +302,185 @@ QPushButton{
              <number>0</number>
             </property>
             <widget class="QWidget" name="page_0">
-             <widget class="QLabel" name="label_2">
-              <property name="geometry">
-               <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>601</width>
-                <height>461</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="pixmap">
-               <pixmap resource="../res/resources.qrc">:/Image/fondAccueil.png</pixmap>
-              </property>
-              <property name="scaledContents">
-               <bool>true</bool>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="../res/resources.qrc">:/Image/fondAccueil.png</pixmap>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="page_1">
-             <widget class="QLabel" name="label_4">
-              <property name="geometry">
-               <rect>
-                <x>160</x>
-                <y>20</y>
-                <width>271</width>
-                <height>301</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="pixmap">
-               <pixmap resource="../res/resources.qrc">:/Image/no-image.jpg</pixmap>
-              </property>
-              <property name="scaledContents">
-               <bool>true</bool>
-              </property>
-             </widget>
-             <widget class="QPushButton" name="pushButton_6">
-              <property name="geometry">
-               <rect>
-                <x>230</x>
-                <y>340</y>
-                <width>150</width>
-                <height>36</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>Insérer une image</string>
-              </property>
-             </widget>
-             <widget class="QPushButton" name="pushButton_7">
-              <property name="geometry">
-               <rect>
-                <x>450</x>
-                <y>420</y>
-                <width>150</width>
-                <height>36</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>Traiter</string>
-              </property>
-             </widget>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <item>
+               <widget class="QLineEdit" name="lineEdit_2"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="importer_button">
+                <property name="text">
+                 <string>Importer un tableau (.csv)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTableWidget" name="tableWidget">
+                <property name="styleSheet">
+                 <string notr="true">QTableWidget {
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+QTableWidget::item {
+    padding: 5px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+QTableWidget::item:selected {
+    background-color: #e6f7ff; /* Couleur de sélection */
+}
+</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="page_3">
-             <widget class="QPushButton" name="pushButton_8">
-              <property name="geometry">
-               <rect>
-                <x>460</x>
-                <y>420</y>
-                <width>150</width>
-                <height>36</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>Traiter</string>
-              </property>
-             </widget>
-             <widget class="QLabel" name="label_5">
-              <property name="geometry">
-               <rect>
-                <x>170</x>
-                <y>20</y>
-                <width>271</width>
-                <height>301</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="pixmap">
-               <pixmap resource="../res/resources.qrc">:/Image/no-image.jpg</pixmap>
-              </property>
-              <property name="scaledContents">
-               <bool>true</bool>
-              </property>
-             </widget>
-             <widget class="QPushButton" name="pushButton_9">
-              <property name="geometry">
-               <rect>
-                <x>240</x>
-                <y>340</y>
-                <width>150</width>
-                <height>36</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>Insérer un CSV</string>
-              </property>
-             </widget>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QFrame" name="frame_5">
+                <property name="minimumSize">
+                 <size>
+                  <width>271</width>
+                  <height>301</height>
+                 </size>
+                </property>
+                <property name="sizeIncrement">
+                 <size>
+                  <width>3</width>
+                  <height>2</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QLabel" name="label_5">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>1305</width>
+                     <height>1505</height>
+                    </size>
+                   </property>
+                   <property name="sizeIncrement">
+                    <size>
+                     <width>3</width>
+                     <height>2</height>
+                    </size>
+                   </property>
+                   <property name="baseSize">
+                    <size>
+                     <width>271</width>
+                     <height>301</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="../res/resources.qrc">:/Image/no-image.jpg</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignRight|Qt::AlignVCenter">
+               <widget class="QFrame" name="frame_6">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_8">
+                 <item>
+                  <widget class="QPushButton" name="pushButton_9">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>36</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Insérer une image</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_8">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>36</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Traiter</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="page_4">
              <widget class="QLabel" name="label_6">
@@ -455,6 +522,49 @@ QPushButton{
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page_5">
+             <widget class="QLabel" name="label_8">
+              <property name="geometry">
+               <rect>
+                <x>70</x>
+                <y>20</y>
+                <width>141</width>
+                <height>71</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Image :</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_9">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>80</y>
+                <width>251</width>
+                <height>261</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="../res/resources.qrc">:/Image/no-image.jpg</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
               </property>
              </widget>
             </widget>
