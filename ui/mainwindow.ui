@@ -299,7 +299,7 @@ QPushButton{
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>0</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="page_0">
              <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -334,17 +334,44 @@ QPushButton{
                <widget class="QTableWidget" name="tableWidget">
                 <property name="styleSheet">
                  <string notr="true">QTableWidget {
-    border: 2px solid #e0e0e0;
-    border-radius: 5px;
+    background-color: #f7f7f7; /* Couleur de fond */
+    border: 1px solid #d1d1d1; /* Bordure */
+    gridline-color: #d1d1d1; /* Couleur des lignes de grille */
+
+    selection-background-color: #a6c9e2; /* Couleur de fond de la sélection */
+    selection-color: #000000; /* Couleur du texte de la sélection */
 }
 
 QTableWidget::item {
-    padding: 5px;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 5px; /* Espacement intérieur des cellules */
+}
+
+QHeaderView::section {
+    background-color: #f7f7f7; /* Couleur de fond de l'en-tête */
+    border: 1px solid #d1d1d1; /* Bordure de l'en-tête */
+    padding: 2px; /* Espacement intérieur de l'en-tête */
+    font-weight: bold; /* Style de police de l'en-tête */
+}
+
+QHeaderView::section:checked {
+    background-color: #a6c9e2; /* Couleur de fond de la case cochée de l'en-tête */
+}
+
+QTableWidget::horizontalHeader {
+    border-bottom: 1px solid #d1d1d1; /* Bordure inférieure de l'en-tête horizontal */
+}
+
+QTableWidget::verticalHeader {
+    border-right: 1px solid #d1d1d1; /* Bordure droite de l'en-tête vertical */
 }
 
 QTableWidget::item:selected {
-    background-color: #e6f7ff; /* Couleur de sélection */
+    background-color: #a6c9e2; /* Couleur de fond des cellules sélectionnées */
+    color: #000000; /* Couleur du texte des cellules sélectionnées */
+}
+
+QTableWidget::item:hover {
+    background-color: #e6f2ff; /* Couleur de fond au survol de la cellule */
 }
 </string>
                 </property>
