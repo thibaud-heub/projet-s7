@@ -128,6 +128,11 @@ void MainWindow::on_pushButton_8_clicked()
 
     // Réinitialiser l'image.
     resetImage();
+
+    //////////////////// CODE DE THIBAUD ////////////////////
+    /*
+
+    */
 }
 
 // Méthode appelée lorsqu'on clique sur le bouton 6
@@ -152,6 +157,11 @@ void MainWindow::on_pushButton_6_clicked()
 
     // Réinitialiser le ui->tableWidget.
     resetTableWidget();
+
+    //////////////////// CODE DE THIBAUD ////////////////////
+    /*
+
+    */
 }
 
 // Méthode pour réinitialiser le contenu du label_5 après le changement de l'index du stackedWidget.
