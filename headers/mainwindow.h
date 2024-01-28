@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
+#include <QThread>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -37,7 +38,15 @@ private slots:
 
     void on_importer_button_clicked();
 
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_6_clicked();
+
 private:
     Ui::MainWindow *ui;
+    bool imageAdd;
+    void resetImage();
+    int rowCount;
+    void resetTableWidget();
 };
 #endif // MAINWINDOW_H
