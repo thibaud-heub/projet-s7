@@ -9,6 +9,7 @@
         <file>Panneaudecommande.png</file>
         <file>fondEcran.jpg</file>
         <file>Design sans titre (5).png</file>
+        <file>image.png</file>
     </qresource>
     <qresource prefix="/icons">
         <file>activity.svg</file>

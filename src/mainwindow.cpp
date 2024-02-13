@@ -41,7 +41,6 @@ void MainWindow::on_pushButton_5_clicked()
     ui->stackedWidget->setCurrentIndex(3);  // Changer l'index du stackedWidget à 3.
 }
 
-// Méthode appelée lorsqu'on clique sur le bouton 9
 void MainWindow::on_pushButton_9_clicked()
 {
     // Ouvrir une boîte de dialogue de fichier pour sélectionner une image.
@@ -57,13 +56,35 @@ void MainWindow::on_pushButton_9_clicked()
     // Afficher le chemin du fichier sélectionné.
     qDebug() << "Fichier sélectionné : " << nomFichier;
 
-    // Charger l'image dans le label_5.
-    QPixmap image(nomFichier);
-    ui->label_5->setPixmap(image);
-    ui->label_5->setScaledContents(true);  // Ajuster la taille de l'image au label.
+    // Charger l'image dans le label_12.
+    QPixmap originalPixmap(nomFichier);
+
+    // Récupérer les dimensions du label_12
+    int labelWidth = ui->label_5->width();
+    int labelHeight = ui->label_5->height();
+
+    // Calculer les proportions de redimensionnement
+    double widthRatio = static_cast<double>(labelWidth) / originalPixmap.width();
+    double heightRatio = static_cast<double>(labelHeight) / originalPixmap.height();
+
+    // Utiliser le rapport le plus petit pour redimensionner l'image tout en conservant le ratio d'aspect
+    int newWidth = static_cast<int>(originalPixmap.width() * qMin(widthRatio, heightRatio));
+    int newHeight = static_cast<int>(originalPixmap.height() * qMin(widthRatio, heightRatio));
+    qDebug() << widthRatio << heightRatio << newWidth << newHeight;
+    // Redimensionner l'image avec le nouveau ratio d'aspect
+    QPixmap scaledPixmap = originalPixmap.scaled(newWidth, newHeight, Qt::KeepAspectRatio);
+
+    ui->label_5->setPixmap(scaledPixmap);
+
+
 
     imageAdd = true;  // Indiquer qu'une image a été insérée.
 }
+
+
+
+
+
 
 // Méthode appelée lorsqu'on clique sur le bouton d'importation
 void MainWindow::on_importer_button_clicked()
