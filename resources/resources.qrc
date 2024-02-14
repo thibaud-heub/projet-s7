@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>etex_rgb_baseline_right.png</file>
+    </qresource>
+</RCC>
