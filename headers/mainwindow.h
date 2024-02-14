@@ -7,11 +7,11 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QThread>
+#include <QMessageBox>
+
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -22,25 +22,23 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+protected:
+    void resizeEvent(QResizeEvent *QEvent) override;
+
 private slots:
+    void on_csvButton_clicked();
 
+    void on_imageButton_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_helpButton_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_imageAnalyseButton_clicked();
 
-    void on_pushButton_4_clicked();
+    void on_csvAnalyzeButton_clicked();
 
-    void on_pushButton_5_clicked();
+    void on_imageLoadButton_clicked();
 
-
-    void on_pushButton_9_clicked();
-
-    void on_importer_button_clicked();
-
-    void on_pushButton_8_clicked();
-
-    void on_pushButton_6_clicked();
+    void on_csvLoadButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -48,5 +46,6 @@ private:
     void resetImage();
     int rowCount;
     void resetTableWidget();
+    QPixmap imagePixmap;
 };
 #endif // MAINWINDOW_H
