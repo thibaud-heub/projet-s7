@@ -2,6 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
+#include <QDebug>
+#include <QThread>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,7 +31,16 @@ private slots:
 
     void on_csvAnalyzeButton_clicked();
 
+    void on_imageLoadButton_clicked();
+
+    void on_csvLoadButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+    bool imageAdd;
+    void resetImage();
+    int rowCount;
+    void resetTableWidget();
+    QPixmap imagePixmap;
 };
 #endif // MAINWINDOW_H
