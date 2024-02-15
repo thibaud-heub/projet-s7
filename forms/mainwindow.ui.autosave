@@ -414,7 +414,7 @@ Ensuite, cliquez sur “Traiter”, et l’application effectuera les calculs, e
                 <bool>true</bool>
                </property>
                <property name="margin">
-                <number>6</number>
+                <number>9</number>
                </property>
               </widget>
              </item>

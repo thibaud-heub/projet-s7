@@ -44,7 +44,7 @@ private:
     Ui::MainWindow *ui;
     bool imageAdd;
     void resetImage();
-    int rowCount;
+    int tableauAdd;
     void resetTableWidget();
     QPixmap imagePixmap;
 };

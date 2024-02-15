@@ -7,7 +7,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     imageAdd = false;  // Initialisation à false, aucune image n'est insérée au début.
-    rowCount = 0;  // Initialisation du nombre de lignes à zéro.
+    tableauAdd = 0;  // Initialisation à false, aucun tableau n'est insérée au début.
+
+    // Désactiver les boutons d'analyse de base
+    ui->csvAnalyzeButton->setEnabled(false);
+    ui->imageAnalyseButton->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -36,8 +40,8 @@ void MainWindow::on_helpButton_clicked()
 
 void MainWindow::on_csvAnalyzeButton_clicked()
 {
-    if (rowCount <= 0) {
-        qDebug() << "Aucun tableau inséré.";
+    if (tableauAdd == 0) {
+        qDebug() << "Aucun tableau inséré";
         return;
     }
 
@@ -119,6 +123,7 @@ void MainWindow::on_imageLoadButton_clicked()
     ui->image->setPixmap(imagePixmap.scaled(ui->image->size(), Qt::KeepAspectRatio));
 
     imageAdd = true;  // Indiquer qu'une image a été insérée.
+    ui->imageAnalyseButton->setEnabled(true);
 }
 
 
@@ -167,6 +172,8 @@ void MainWindow::on_csvLoadButton_clicked()
         ui->csvTable->verticalHeader()->hide();
     }
     mFile.close();
+    tableauAdd = 1;
+    ui->csvAnalyzeButton->setEnabled(true);
 }
 
 
@@ -182,6 +189,7 @@ void MainWindow::resetImage()
     QPixmap pixmap = QPixmap::fromImage(noImage);
 
     ui->image->setPixmap(pixmap);
+    ui->imageAnalyseButton->setEnabled(false);
 }
 
 // Méthode pour réinitialiser le ui->tableWidget après le changement de l'index du stackedWidget.
@@ -190,7 +198,8 @@ void MainWindow::resetTableWidget()
     ui->csvTable->clear();  // Effacer toutes les cellules du tableau.
     ui->csvTable->setRowCount(0);  // Réinitialiser le nombre de lignes à zéro.
     ui->csvTable->setColumnCount(0);  // Réinitialiser le nombre de colonnes à zéro.
-    rowCount = 0;  // Réinitialiser la variable pour le nombre de lignes à zéro.
+    tableauAdd = 0;
+    ui->csvAnalyzeButton->setEnabled(false);
 }
 
 void MainWindow::resizeEvent(QResizeEvent* QEvent)
@@ -201,3 +210,6 @@ void MainWindow::resizeEvent(QResizeEvent* QEvent)
         ui->image->setPixmap(imagePixmap.scaled(ui->image->size(), Qt::KeepAspectRatio));
     }
 }
+
+
+
