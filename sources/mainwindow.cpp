@@ -101,24 +101,7 @@ void MainWindow::on_imageLoadButton_clicked()
     // Ouvrir une boîte de dialogue de fichier pour sélectionner une image.
     QString nomFichier = QFileDialog::getOpenFileName(this, tr("Sélectionnez une image"), "", tr("Images (*.png *.jpg *.bmp);;Tous les fichiers (*.*)"));
 
-    // Vérifier si l'utilisateur a annulé la sélection.
-    if (nomFichier.isEmpty())
-    {
-        QMessageBox::warning(this,"Image introuvable", "Aucun fichier selectionné");
-        return;
-    }
-
     imagePixmap = QPixmap(nomFichier);
-
-    // Vérifier si le chargement de l'image est réussi
-    if (imagePixmap.isNull()) {
-        QMessageBox message;
-        message.setText("Erreur lors du chargement de l'image.");
-        message.exec();
-        return;
-    }
-
-    // Redimensionner l'image avec le nouveau ratio d'aspect et la placer dans le label
 
     ui->image->setPixmap(imagePixmap.scaled(ui->image->size(), Qt::KeepAspectRatio));
 

@@ -17,7 +17,6 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-
    <property name="styleSheet">
     <string notr="true">QWidget{
 	background-color:rgb(240, 111, 15);
@@ -48,11 +47,11 @@
 	border-top-left-radius:5px;
 	border-bottom-left-radius:5px;
 }
-
+/*
 #image {
 	border:1px dashed #EEEEEE;
 }
-
+*/
 #csvResultTable{
 border: none;
 }
@@ -88,6 +87,7 @@ QComboBox{
 	padding-left:0.3em;
 }
 
+
 QComboBox:hover{
 	background-color:rgb(196, 232, 235);
 }
@@ -109,9 +109,12 @@ QComboBox::down-arrow {
 	padding-right:0.6em;
 	padding-left:0.6em;
 	width:1em;
+}
+
+#csvTable {
+	background-color: rgb(255, 255, 255);
 }</string>
    </property>
-
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QWidget" name="header" native="true">
@@ -145,7 +148,6 @@ QComboBox::down-arrow {
     <item>
      <widget class="QWidget" name="body" native="true">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
-
        <property name="spacing">
         <number>0</number>
        </property>
@@ -179,7 +181,6 @@ QComboBox::down-arrow {
           <property name="bottomMargin">
            <number>9</number>
           </property>
-
           <item>
            <widget class="QPushButton" name="csvButton">
             <property name="text">
