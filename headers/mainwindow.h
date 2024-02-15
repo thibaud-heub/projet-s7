@@ -24,7 +24,7 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent *QEvent) override;
-
+   
 private slots:
     void on_csvButton_clicked();
 

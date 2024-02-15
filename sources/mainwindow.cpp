@@ -126,9 +126,6 @@ void MainWindow::on_imageLoadButton_clicked()
     ui->imageAnalyseButton->setEnabled(true);
 }
 
-
-
-
 void MainWindow::on_csvLoadButton_clicked()
 {
     // Sélectionner un fichier CSV à importer.
@@ -176,8 +173,6 @@ void MainWindow::on_csvLoadButton_clicked()
     ui->csvAnalyzeButton->setEnabled(true);
 }
 
-
-
 // Méthode pour réinitialiser le contenu du label_5 après le changement de l'index du stackedWidget.
 void MainWindow::resetImage()
 {
@@ -210,6 +205,4 @@ void MainWindow::resizeEvent(QResizeEvent* QEvent)
         ui->image->setPixmap(imagePixmap.scaled(ui->image->size(), Qt::KeepAspectRatio));
     }
 }
-
-
 
