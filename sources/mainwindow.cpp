@@ -7,7 +7,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     imageAdd = false;  // Initialisation à false, aucune image n'est insérée au début.
-    rowCount = 0;  // Initialisation du nombre de lignes à zéro.
+    tableauAdd = 0;  // Initialisation à false, aucun tableau n'est insérée au début.
+
+    // Désactiver les boutons d'analyse de base
+    ui->csvAnalyzeButton->setEnabled(false);
+    ui->imageAnalyseButton->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -36,8 +40,8 @@ void MainWindow::on_helpButton_clicked()
 
 void MainWindow::on_csvAnalyzeButton_clicked()
 {
-    if (rowCount <= 0) {
-        qDebug() << "Aucun tableau inséré.";
+    if (tableauAdd == 0) {
+        qDebug() << "Aucun tableau inséré";
         return;
     }
 
@@ -100,28 +104,27 @@ void MainWindow::on_imageLoadButton_clicked()
     // Vérifier si l'utilisateur a annulé la sélection.
     if (nomFichier.isEmpty())
     {
-        qDebug() << "Aucun fichier sélectionné.";
+        QMessageBox::warning(this,"Image introuvable", "Aucun fichier selectionné");
         return;
     }
 
-    // Afficher le chemin du fichier sélectionné.
-    qDebug() << "Fichier sélectionné : " << nomFichier;
-
-    // Charger l'image dans le label_12.
     imagePixmap = QPixmap(nomFichier);
 
-    // Récupérer les dimensions du label_12
-    int labelWidth = ui->image->width();
-    int labelHeight = ui->image->height();
+    // Vérifier si le chargement de l'image est réussi
+    if (imagePixmap.isNull()) {
+        QMessageBox message;
+        message.setText("Erreur lors du chargement de l'image.");
+        message.exec();
+        return;
+    }
 
-    // Redimensionner l'image avec le nouveau ratio d'aspect
-    imagePixmap.scaled(ui->imageContainer->width(), ui->imageContainer->height(), Qt::KeepAspectRatio);
+    // Redimensionner l'image avec le nouveau ratio d'aspect et la placer dans le label
 
-    ui->image->setPixmap(imagePixmap);
+    ui->image->setPixmap(imagePixmap.scaled(ui->image->size(), Qt::KeepAspectRatio));
 
     imageAdd = true;  // Indiquer qu'une image a été insérée.
+    ui->imageAnalyseButton->setEnabled(true);
 }
-
 
 void MainWindow::on_csvLoadButton_clicked()
 {
@@ -136,30 +139,38 @@ void MainWindow::on_csvLoadButton_clicked()
     }
     QTextStream inFile(&mFile);
 
-    int cter = 0;
-    QString readedLine = inFile.readLine();
-    QStringList listValue = readedLine.split(";");
-    ui->csvTable->setColumnCount(listValue.size());
-    ui->csvTable->setHorizontalHeaderLabels(listValue);
+    inFile.setEncoding(QStringConverter::Latin1);  // Utilisez la nouvelle classe pour Qt 6 et versions ultérieures
 
-    while(!inFile.atEnd())
+
+    QString allFile = inFile.readAll();
+    QStringList listRow = allFile.split('\n');
+
+    for(int i = 0 ; i < listRow.size() ; i++)
     {
-        QString readedLine = inFile.readLine();
-        QStringList listValue = readedLine.split(";");
+        QStringList row = listRow.at(i).split(';');
 
-        rowCount += 1;  // Incrémenter le nombre de lignes.
+        int currentRowCount = ui->csvTable->rowCount();
+        ui->csvTable->insertRow(currentRowCount);
 
-        cter += 1;
-        ui->csvTable->setRowCount(cter);
-        for(int k = 0; k < listValue.size(); k++)
-        {
-            // Créer un élément non modifiable et l'ajouter à la table.
-            QTableWidgetItem *item = new QTableWidgetItem(listValue[k]);
-            ui->csvTable->setItem(cter-1, k, item);
+        int currentColumnCount = ui->csvTable->columnCount();
+        int newColumnCount = row.size();
+
+        if (newColumnCount > currentColumnCount) {
+            ui->csvTable->setColumnCount(newColumnCount);
         }
+
+        for (int col = 0; col < row.size(); ++col) {
+
+            QString cellValue = row[col].remove("\"");
+            QTableWidgetItem *item = new QTableWidgetItem(cellValue);
+            ui->csvTable->setItem(currentRowCount, col, item);
+        }
+        ui->csvTable->horizontalHeader()->hide();
+        ui->csvTable->verticalHeader()->hide();
     }
-    mFile.flush();
     mFile.close();
+    tableauAdd = 1;
+    ui->csvAnalyzeButton->setEnabled(true);
 }
 
 // Méthode pour réinitialiser le contenu du label_5 après le changement de l'index du stackedWidget.
@@ -173,6 +184,7 @@ void MainWindow::resetImage()
     QPixmap pixmap = QPixmap::fromImage(noImage);
 
     ui->image->setPixmap(pixmap);
+    ui->imageAnalyseButton->setEnabled(false);
 }
 
 // Méthode pour réinitialiser le ui->tableWidget après le changement de l'index du stackedWidget.
@@ -181,5 +193,16 @@ void MainWindow::resetTableWidget()
     ui->csvTable->clear();  // Effacer toutes les cellules du tableau.
     ui->csvTable->setRowCount(0);  // Réinitialiser le nombre de lignes à zéro.
     ui->csvTable->setColumnCount(0);  // Réinitialiser le nombre de colonnes à zéro.
-    rowCount = 0;  // Réinitialiser la variable pour le nombre de lignes à zéro.
+    tableauAdd = 0;
+    ui->csvAnalyzeButton->setEnabled(false);
 }
+
+void MainWindow::resizeEvent(QResizeEvent* QEvent)
+{
+    QMainWindow::resizeEvent(QEvent);
+
+    if (imageAdd) {
+        ui->image->setPixmap(imagePixmap.scaled(ui->image->size(), Qt::KeepAspectRatio));
+    }
+}
+

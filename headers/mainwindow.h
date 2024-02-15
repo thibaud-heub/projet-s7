@@ -7,6 +7,8 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QThread>
+#include <QMessageBox>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,6 +22,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+protected:
+    void resizeEvent(QResizeEvent *QEvent) override;
+   
 private slots:
     void on_csvButton_clicked();
 
@@ -39,7 +44,7 @@ private:
     Ui::MainWindow *ui;
     bool imageAdd;
     void resetImage();
-    int rowCount;
+    int tableauAdd;
     void resetTableWidget();
     QPixmap imagePixmap;
 };

@@ -17,6 +17,7 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+
    <property name="styleSheet">
     <string notr="true">QWidget{
 	background-color:rgb(240, 111, 15);
@@ -110,6 +111,7 @@ QComboBox::down-arrow {
 	width:1em;
 }</string>
    </property>
+
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QWidget" name="header" native="true">
@@ -143,6 +145,7 @@ QComboBox::down-arrow {
     <item>
      <widget class="QWidget" name="body" native="true">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
+
        <property name="spacing">
         <number>0</number>
        </property>
@@ -176,6 +179,7 @@ QComboBox::down-arrow {
           <property name="bottomMargin">
            <number>9</number>
           </property>
+
           <item>
            <widget class="QPushButton" name="csvButton">
             <property name="text">
@@ -475,14 +479,167 @@ QComboBox::down-arrow {
          <widget class="QWidget" name="helpPage">
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
-            <widget class="QLabel" name="helpLabel">
-             <property name="text">
-              <string>TextLabel</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+              <widget class="QLabel" name="label_2">
+               <property name="font">
+                <font>
+                 <pointsize>15</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>### Comment utiliser l’application ?</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::MarkdownText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="font">
+                <font>
+                 <family>Sitka Text</family>
+                 <strikeout>false</strikeout>
+                 <fontweight>Medium</fontweight>
+                </font>
+               </property>
+               <property name="text">
+                <string>Cette application permet de déterminer pour chaque bulle d’un échantillon de plâtre, la distance la séparant de la bulle la plus proche.</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="margin">
+                <number>6</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="font">
+                <font>
+                 <family>Sitka Text</family>
+                </font>
+               </property>
+               <property name="text">
+                <string>Elle peut traiter 2 types de fichiers : 
+
+- Un fichier CSV, contenant la position et la taille des bulles
+- Une image
+</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::MarkdownText</enum>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+               </property>
+               <property name="margin">
+                <number>6</number>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_3">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <italic>true</italic>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>#### Fichier CSV</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::MarkdownText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="font">
+                <font>
+                 <family>Sitka Text</family>
+                 <strikeout>false</strikeout>
+                 <fontweight>Medium</fontweight>
+                </font>
+               </property>
+               <property name="text">
+                <string>Les colonnes du fichier CSV doivent contenir les informations sur les bulles dans l’ordre suivant :
+No., Diamètre cercle équivalent, Unité, Zone, Unité, Centre de gravité, Unité, Diamètre maximal, Unité, Diamètre minimal, Unité, Périmètre, Unité, Ratio zone, Unité, Circularité.
+Certaines informations peuvent être absentes, car seuls le diamètre du cercle équivalent et le centre de gravité (ainsi que leurs unités) sont nécessaires pour nos calculs. Cependant, la position de ces colonnes doit correspondre avec l'ordre précédent, même si les autres colonnes sont vides.
+
+Pour traiter ce fichier, allez dans l’onglet “CSV”,  cliquez et glissez un fichier CSV dans le cadre, ou cliquez sur “Importer un CSV” puis sélectionnez un fichier CSV à importer.
+Ensuite, cliquez sur “Traiter”, et l’application effectuera les calculs, et affichera le résultat quand il sera prêt.
+</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="margin">
+                <number>9</number>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_5">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <italic>true</italic>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>#### Image</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::MarkdownText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="font">
+                <font>
+                 <family>Sitka Text</family>
+                 <strikeout>false</strikeout>
+                 <stylestrategy>PreferDefault</stylestrategy>
+                 <kerning>false</kerning>
+                 <hintingpreference>PreferDefaultHinting</hintingpreference>
+                 <fontweight>Medium</fontweight>
+                </font>
+               </property>
+               <property name="mouseTracking">
+                <bool>true</bool>
+               </property>
+               <property name="text">
+                <string>Pour traiter une image, allez dans l’onglet “Image”, cliquez et glissez une image dans le cadre, ou cliquez sur “Importer une image” puis sélectionnez une image à importer.
+Puis, entrez l’unité de l’échelle dans le menu déroulant.
+Ensuite, cliquez sur “Traiter”, et l’application effectuera les calculs. Les résultats seront affichés à l’écran quand ils seront prêts. Cela peut prendre un certain temps.
+</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="margin">
+                <number>6</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
