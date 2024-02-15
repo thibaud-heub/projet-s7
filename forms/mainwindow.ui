@@ -17,6 +17,99 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget{
+	background-color:rgb(240, 111, 15);
+}
+
+#header, #logo, #centralwidget{
+	background-color:white;
+}
+
+#body{
+	border-radius:50px;
+}
+
+#content{
+	border-top:1px solid black;
+	border-right:1px solid black;
+	border-bottom:1px solid black;
+
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+}
+
+#navbar{
+	background-color:rgb(229, 94, 15);
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+	border-left:1px solid black;
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+}
+
+#image {
+	border:1px dashed #EEEEEE;
+}
+
+#csvResultTable{
+border: none;
+}
+
+QPushButton{
+	padding-left:1.6em;
+	padding-right:1.6em;
+	padding-top:0.5em;
+	padding-bottom:0.5em;
+	margin-left:0em;
+	margin-right:0em;
+
+	border:none;
+	background-color:rgb(232, 232, 232);
+	color: black;
+}
+
+QPushButton:hover{
+	background-color:rgb(196, 232, 235);
+}
+
+QPushButton:pressed{
+	border: 1px solid black;
+	background-color:rgb(191, 219, 234);
+}
+
+QComboBox{
+	background-color:rgb(231, 231, 231);
+	color:black;
+	border:1px solid black;
+	padding-top:0.3em;
+	padding-bottom:0.3em;
+	padding-left:0.3em;
+}
+
+QComboBox:hover{
+	background-color:rgb(196, 232, 235);
+}
+
+QComboBox:pressed{
+	background-color:rgb(191, 219, 234);
+}
+
+QComboBox::drop-down{
+	background-color:rgb(231, 231, 231);
+}
+
+QComboBox QAbstractItemView {
+    background-color:rgb(231, 231, 231);
+}
+
+QComboBox::down-arrow {
+	image: url(&quot;:/images/chevron-down.svg&quot;);
+	padding-right:0.6em;
+	padding-left:0.6em;
+	width:1em;
+}</string>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QWidget" name="header" native="true">
@@ -50,9 +143,39 @@
     <item>
      <widget class="QWidget" name="body" native="true">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QWidget" name="navbar" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>0</height>
+          </size>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
           <item>
            <widget class="QPushButton" name="csvButton">
             <property name="text">
@@ -108,6 +231,12 @@
                 <property name="enabled">
                  <bool>false</bool>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>25</height>
+                 </size>
+                </property>
                 <property name="value">
                  <number>0</number>
                 </property>
@@ -138,6 +267,21 @@
                 <property name="text">
                  <string>Analyser</string>
                 </property>
+                <property name="iconSize">
+                 <size>
+                  <width>16</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="autoRepeatDelay">
+                 <number>300</number>
+                </property>
+                <property name="default">
+                 <bool>false</bool>
+                </property>
+                <property name="flat">
+                 <bool>false</bool>
+                </property>
                </widget>
               </item>
              </layout>
@@ -154,6 +298,21 @@
                <widget class="QLabel" name="image">
                 <property name="text">
                  <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="../resources/resources.qrc">:/images/image.svg</pixmap>
+                </property>
+                <property name="scaledContents">
+                 <bool>false</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="wordWrap">
+                 <bool>false</bool>
+                </property>
+                <property name="margin">
+                 <number>0</number>
                 </property>
                </widget>
               </item>
@@ -267,6 +426,15 @@
                 <property name="enabled">
                  <bool>false</bool>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
                 <property name="value">
                  <number>0</number>
                 </property>
@@ -279,8 +447,8 @@
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>40</width>
-                  <height>20</height>
+                  <width>5</width>
+                  <height>10</height>
                  </size>
                 </property>
                </spacer>

@@ -1,5 +1,12 @@
 <RCC>
     <qresource prefix="/images">
+        <file>check.svg</file>
         <file>etex_rgb_baseline_right.png</file>
+        <file>file-text.svg</file>
+        <file>image.svg</file>
+        <file>layout.svg</file>
+        <file>save.svg</file>
+        <file>share.svg</file>
+        <file>chevron-down.svg</file>
     </qresource>
 </RCC>
